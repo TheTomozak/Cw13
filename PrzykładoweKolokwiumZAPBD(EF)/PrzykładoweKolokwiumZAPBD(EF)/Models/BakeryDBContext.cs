@@ -11,9 +11,19 @@ namespace PrzykładoweKolokwiumZAPBD_EF_.Models
     {
 
 
+      
+
         public BakeryDBContext(DbContextOptions options) : base(options)
         {
         }
+
+        
+        public DbSet<Zamowienie> Zamowienies { get; set; }
+        public DbSet<ZamowienieWyrobCukierniczy> ZamowienieWyrobCukierniczies { get; set; }
+        public DbSet<WyrobCukierniczy> WyrobCukierniczies { get; set; }
+        public DbSet<Klient> Klients  { get; set; }
+        public DbSet<Pracownik> Pracowniks  { get; set; }
+
 
         
 

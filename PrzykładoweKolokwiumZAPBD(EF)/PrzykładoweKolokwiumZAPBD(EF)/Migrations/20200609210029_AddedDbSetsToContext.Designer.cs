@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PrzykładoweKolokwiumZAPBD_EF_.Models;
 
 namespace PrzykładoweKolokwiumZAPBD_EF_.Migrations
 {
     [DbContext(typeof(BakeryDBContext))]
-    partial class BakeryDBContextModelSnapshot : ModelSnapshot
+    [Migration("20200609210029_AddedDbSetsToContext")]
+    partial class AddedDbSetsToContext
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
