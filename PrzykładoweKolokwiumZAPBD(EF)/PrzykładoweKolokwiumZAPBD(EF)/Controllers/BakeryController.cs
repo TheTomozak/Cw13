@@ -38,8 +38,12 @@ namespace PrzykładoweKolokwiumZAPBD_EF_.Controllers
 
             switch (helperRequest.Number)
             {
-                case 0:
-                    return BadRequest("Klient with this lastname not exist");
+                case 1:
+                    return BadRequest($"Klient o nazwisku \"{nazwisko}\" nie istnieje");
+                    break;
+                case 2:
+                    return BadRequest($"Klient \"{nazwisko}\" nie posiada zamowien");
+                    break;
                 default:
                     return Ok(helperRequest.List);
             }
