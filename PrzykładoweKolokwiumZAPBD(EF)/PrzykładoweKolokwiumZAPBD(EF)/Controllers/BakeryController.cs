@@ -64,7 +64,7 @@ namespace PrzykładoweKolokwiumZAPBD_EF_.Controllers
                     return BadRequest($"Brak klienta o id: \"{id}\" ");
                     
                 case 2:
-                    return BadRequest($"Wyrob \"{request.Wyrob}\" nie istnieje w bazie danych");
+                    return BadRequest($"Wyrob nie istnieje w bazie danych");
                     
                 default:
                     return Ok("Dodano zamowienie!");

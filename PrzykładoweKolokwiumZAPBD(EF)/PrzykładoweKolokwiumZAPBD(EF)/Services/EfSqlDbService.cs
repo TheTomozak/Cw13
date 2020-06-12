@@ -80,6 +80,13 @@ namespace PrzykładoweKolokwiumZAPBD_EF_.Services
 
         public HelperRequest AddNewZamowienie(AddNewZamowianieRequest request, int id)
         {
+
+
+            /*
+            int maxIdWyrobuCukierczniego = _context.WyrobCukierniczies.Max(m => m.IdWyrobCukierniczy);
+            int maxIdZamowienia = _context.Zamowienies.Max(m => m.IdZamowienie);
+             */
+
             var helper = new HelperRequest();
             helper.Number = 0;
 
@@ -92,37 +99,39 @@ namespace PrzykładoweKolokwiumZAPBD_EF_.Services
                 return helper;
             }
 
-            var countWyrob = _context.WyrobCukierniczies.Count(c => c.Nazwa == request.Wyrob);
+            WyrobCukierniczy wyrob = null;
 
-            if (countWyrob == 0)
+            foreach (var wyr in request.Wyroby)
             {
-                helper.Number = 2;
-                return helper;
+                var countWyrob = _context.WyrobCukierniczies.Count(c => c.Nazwa == wyr.Wyrob);
+
+                if (countWyrob == 0)
+                {
+                    helper.Number = 2;
+                    return helper;
+                }
+                else
+                {
+                     wyrob = new WyrobCukierniczy
+                    {
+
+                        Nazwa = wyr.Wyrob
+
+                    };
+                }
             }
 
-
-            /*
-            int maxIdWyrobuCukierczniego = _context.WyrobCukierniczies.Max(m => m.IdWyrobCukierniczy);
-            int maxIdZamowienia = _context.Zamowienies.Max(m => m.IdZamowienie);
-             */
+     
 
 
-
-          
-
-            var wyrob = new WyrobCukierniczy
-            {
-               
-                Nazwa = request.Wyrob
-
-            };
+           
 
             var zamowienie = new Zamowienie
             {
                
                 IdKlient = id,
                 DataPrzyjecia = request.DataPrzyjecia,
-                Uwagi = request.UwagiZamowienia,
+                Uwagi = request.Uwagi,
                
 
             };
@@ -130,7 +139,7 @@ namespace PrzykładoweKolokwiumZAPBD_EF_.Services
             var zamowienieWyrob = new ZamowienieWyrobCukierniczy
             {
                
-                Ilosc = request.Ilosc,
+                
                 Uwagi = request.Uwagi,
                 WyrobCukierniczy = wyrob,
                 Zamowienie = zamowienie

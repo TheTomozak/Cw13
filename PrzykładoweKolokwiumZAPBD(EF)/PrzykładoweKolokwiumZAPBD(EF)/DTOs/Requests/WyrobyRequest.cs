@@ -6,16 +6,15 @@ using System.Threading.Tasks;
 
 namespace PrzykładoweKolokwiumZAPBD_EF_.DTOs.Requests
 {
-    public class AddNewZamowianieRequest
+    public class WyrobyRequest
     {
-        [Required]
-        public DateTime DataPrzyjecia { get; set; }
-
 
         public string Uwagi { get; set; }
 
         [Required]
-        public ICollection<WyrobyRequest> Wyroby { get; set; }
+        public int Ilosc { get; set; }
 
+        [Required]
+        public string Wyrob { get; set; }
     }
 }
